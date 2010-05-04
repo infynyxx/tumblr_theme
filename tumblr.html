@@ -1,0 +1,286 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="color:Background" content="#ffffff"/>
+    <meta name="font:Body" content="Gill Sans, sans-serif, 'Helvetica Neue',Helvetica,Arial,'Liberation Sans',FreeSans"/>
+    <meta name="color:Separator" content="#eeeeee"/>
+    <meta name="color:Description" content="#eeeeee"/>
+    <meta name="color:Post Info" content="#aaaaaa"/>    
+    <meta name="text:Disqus Shortname" content="" />
+    <title>{block:SearchPage}Search results for "{SearchQuery}" - {/block:SearchPage}{block:PostSummary}{PostSummary} - {/block:PostSummary}{Title}</title>
+    <link rel="alternate" type="application/rss+xml" href="{RSS}">
+    <link rel="stylesheet" href="http://static.tumblr.com/shrl2lc/Vtnkhc48t/betaprime-v1.css"/>
+    <link rel="stylesheet" href="http://static.tumblr.com/shrl2lc/Zjmkh4u4l/notes.css" type="text/css"/>
+    <script src="http://static.tumblr.com/shrl2lc/Kb0kl4vtp/jquery.js" type="text/javascript" charset="utf-8"></script>    
+	<link rel="shortcut icon" href="{Favicon}" />
+	{block:Description}
+		<meta name="description" content="{MetaDescription}" />
+	{/block:Description}
+	<style type="text/css">
+	    body {
+	      font-family: "Gill Sans, sans-serif, 'Helvetica Neue',Helvetica,Arial,'Liberation Sans',FreeSans";
+	      background-color: {color:Background};
+		  font-size: 0.9em;
+	    }
+		
+		h3 {
+			font-size: 23px;
+		}
+
+		#head h1 {
+		   font-size: 4em;
+		}
+		
+		#wrap_main      {
+                    width: 940px;
+		}
+		
+		#wrap {
+			width: 620px;
+			float: left;
+                        margin-right: 50px;
+		}
+		
+		#wrap_right     {
+                    width: 250px;
+                    float: left;
+                    background-color: #F0F0F0;
+                    padding: 5px;
+                }
+
+		#desc {
+		  background-color: {color:Description};
+		  width:500px;
+		}
+
+		.info {
+		  color: {color:Post Info};
+		}
+
+		.post {
+		  border-color: {color:Separator};
+		}
+
+		.text img {
+		  max-width: 500px;
+		}
+
+		.text blockquote img {
+		  max-width: 150px;
+		}
+		
+		a.comments_link {
+			color: #aaa;
+			text-decoration: none;
+		}
+		
+		#disqus_thread {
+			padding: 20px 0;
+			clear: both;
+		}
+	 
+	    {CustomCSS}
+  </style>  
+  </head>
+  <body>
+        <div id="wrap_main">
+            <div id="wrap">
+                    <div id="head">
+                            <h1><a href="/">{Title}</a></h1>
+                            <div id="desc-small">
+                                    {Description}
+                            </div>
+                            {block:HasPages}
+                                    <br/><br/>
+                                    {block:Pages}<a href="{URL}">{Label}</a>&nbsp;&nbsp;{/block:Pages}
+                            {/block:HasPages}
+                    </div>
+        
+                    <div id="content">
+            
+                            {block:Posts}
+                                    
+                                    {block:Text}
+                                            <div class="post text">
+                                                    {block:Date}<a href="{Permalink}" class="permalink">#</a>{/block:Date}
+                                                    {block:Title}<h3>{Title}</h3>{/block:Title}
+                                                    {Body}
+                                                    {block:Date}<div class="info">{TimeAgo}{block:IfDisqusShortname} with <a href="{Permalink}#disqus_thread" class="comments_link"></a>.{block:IfDisqusShortname}</div>{/block:Date}					
+                                                    {block:HasTags} 
+                                                            <div class="info">
+                                                Tags:&nbsp;
+                                                {block:Tags}
+                                                <a href="{TagURL}">{Tag}</a>&nbsp;
+                                                {block:Tags}
+                                                </div> 
+                                                    {/block:HasTags}
+                                            </div>
+                                    {/block:Text}
+                                    
+                                    {block:Photo}
+                                            <div class="post photo">
+                                                    {block:Date}<a href="{Permalink}" class="permalink">#</a>{/block:Date}
+                                                    {LinkOpenTag}<img alt="{PhotoAlt}" src="{PhotoURL-500}"/>{LinkCloseTag}
+                                                    {block:Caption}{Caption}{/block:Caption}
+                                                    {block:Date}<div class="info">This was posted {TimeAgo}. It has {NoteCount} notes{block:IfDisqusShortname} and <a href="{Permalink}#disqus_thread" class="comments_link"></a>{block:IfDisqusShortname}{block:HighRes} and <a href="{PhotoURL-HighRes}">a high-res version</a>{/block:HighRes}.</div>{/block:Date}
+                                                    {block:HasTags} 
+                                                <div class="info">
+                                                Tags:&nbsp;
+                                                {block:Tags}
+                                                <a href="{TagURL}">{Tag}</a>&nbsp;
+                                                {block:Tags}
+                                                </div> 
+                                                {/block:HasTags}
+                                            </div>
+                                    {/block:Photo}
+                                    
+                                    {block:Quote}
+                                            <div class="post quote">
+                                                    {block:Date}<a href="{Permalink}" class="permalink">#</a>{/block:Date}
+                                                    <div class="deco">&#8220;</div>
+                                                    <blockquote>{Quote}</blockquote>
+                                                    {block:Source}<cite>{Source}</cite>{/block:Source}
+                                                    {block:Date}<div class="info">This was posted {TimeAgo}.  It has {NoteCount} notes{block:IfDisqusShortname} and <a href="{Permalink}#disqus_thread" class="comments_link"></a>{block:IfDisqusShortname}.</div>{/block:Date}
+                                                    {block:HasTags} 
+                                                            <div class="info">
+                                                Tags:&nbsp;
+                                                {block:Tags}
+                                                <a href="{TagURL}">{Tag}</a>&nbsp;
+                                                {block:Tags}
+                                                </div>
+                                                    {/block:HasTags} 
+                                            </div>
+                                    {/block:Quote}
+                                    
+                                    {block:Link}
+                                            <div class="post link">
+                                                    {block:Date}<a href="{Permalink}" class="permalink">#</a>{/block:Date}
+                                                    <a class="go" href="{URL}">{Name}</a>
+                                                    {block:Description}{Description}{/block:Description}
+                                                    {block:Date}<div class="info">This was posted {TimeAgo}.  It has {NoteCount} notes{block:IfDisqusShortname} and <a href="{Permalink}#disqus_thread" class="comments_link"></a>{block:IfDisqusShortname}.</div>{/block:Date}
+                                                    {block:HasTags} 
+                                                            <div class="info">
+                                                Tags:&nbsp;
+                                                {block:Tags}
+                                                <a href="{TagURL}">{Tag}</a>&nbsp;
+                                                {block:Tags}
+                                                </div>
+                                                    {/block:HasTags} 
+                                            </div>
+                                    {/block:Link}
+                                    
+                                    {block:Chat}
+                                            <div class="post chat">
+                                                    {block:Date}<a href="{Permalink}" class="permalink">#</a>{/block:Date}
+                                                    {block:Title}<h3>{Title}</h3>{/block:Title}
+                                                    <ul class="conv">
+                                                            {block:Lines}<li class="{Alt}">{block:Label}<strong>{Label}</strong> {/block:Label}{Line}</li>{/block:Lines}						
+                                                    </ul>
+                                                    {block:Date}<div class="info">This was posted {TimeAgo}.  It has {NoteCount} notes{block:IfDisqusShortname} and <a href="{Permalink}#disqus_thread" class="comments_link"></a>{block:IfDisqusShortname}.</div>{/block:Date}
+                                                    {block:HasTags} 
+                                                            <div class="info">
+                                                Tags:&nbsp;
+                                                {block:Tags}
+                                                <a href="{TagURL}">{Tag}</a>&nbsp;
+                                                {block:Tags}
+                                                </div>
+                                                    {/block:HasTags} 
+                                            </div>
+                                    {/block:Chat}
+                                    
+                                    {block:Audio}
+                                            <div class="post audio">
+                                                    {block:Date}<a href="{Permalink}" class="permalink">#</a>{/block:Date}
+                                                    {AudioPlayerWhite}
+                                                    {block:Caption}{Caption}{/block:Caption}
+                                                    {block:Date}<div class="info">This was posted {TimeAgo}.  It has {NoteCount} notes{block:IfDisqusShortname}, <a href="{Permalink}#disqus_thread" class="comments_link"></a>,{block:IfDisqusShortname} and {FormattedPlayCount} plays.</div>{/block:Date}
+                                                    {block:HasTags} 
+                                                            <div class="info">
+                                                Tags:&nbsp;
+                                                {block:Tags}
+                                                <a href="{TagURL}">{Tag}</a>&nbsp;
+                                                {block:Tags}
+                                                </div>
+                                                    {/block:HasTags} 
+                                            </div>
+                                    {/block:Audio}
+                                                            
+                                    {block:Video}
+                                            <div class="post video">
+                                                    {block:Date}<a href="{Permalink}" class="permalink">#</a>{/block:Date}
+                                                    {Video-500}
+                                                    {block:Caption}{Caption}{/block:Caption}
+                                                    {block:Date}<div class="info">This was posted {TimeAgo}.  It has {NoteCount} notes{block:IfDisqusShortname} and <a href="{Permalink}#disqus_thread" class="comments_link"></a>{block:IfDisqusShortname}.</div>{/block:Date}
+                                                    {block:HasTags} 
+                                                            <div class="info">
+                                                Tags:&nbsp;
+                                                {block:Tags}
+                                                <a href="{TagURL}">{Tag}</a>&nbsp;
+                                                {block:Tags}
+                                                </div>
+                                                    {/block:HasTags} 
+                                            </div>
+                                    {/block:Video}
+                                    
+                                    {block:Date}
+                                            {block:IfDisqusShortname}
+                                                    {block:Permalink}
+                                                            <div id="disqus_thread"></div>
+                                                            <script type="text/javascript" src="http://disqus.com/forums/{text:Disqus Shortname}/embed.js"></script>
+                                                            <noscript><a href="http://{text:Disqus Shortname}.disqus.com/?url=ref">View the discussion thread.</a></noscript>
+                                                    {/block:Permalink}
+                                            {/block:IfDisqusShortname}
+                                    {/block:Date}
+                                    
+                                    {block:PostNotes}
+                                            {PostNotes}
+                                    {/block:PostNotes}
+                                    
+                    {/block:Posts}
+                    
+                    {block:Pagination}
+                    <div id="nav">
+                    {block:PreviousPage}<a href="{PreviousPage}" class="prev">Previous page</a>{/block:PreviousPage}
+                    {block:NextPage}<a href="{NextPage}" class="next">Next page</a>{/block:NextPage}
+                    <div class="clr"></div>
+                    </div>
+                    {/block:Pagination}
+            
+                    </div>
+        
+                    <div id="footer">        
+                            <p>Powered by <a href="http://tumblr.com">Tumblr</a>, designed by <a href="http://nothingconcept.com">Evan Walsh</a> and modified by <a href="http://life.infynyxx.com">Prajwal Tuladhar</a></p>
+                    </div>
+        </div>
+            
+            <div id="wrap_right">
+                <p>
+                    Hi, I'm Prajwal and this is my personal blog mainly focusing on some random things directy or indirectly affecting my life with some extra touch on <a href="/tagged/finance">finance</a> and <a href="/tagged/economy">economy</a>. I also have a <a href="http://prajwal-tuladhar.net.np">tech blog</a>, kind of my professional blog. I work @ <a href="http://www.collegehumor.com">collegehumor.com</a> as back end developer.
+                </p>
+                <p>
+                    I grew up in <a href="http://en.wikipedia.org/wiki/Kathmandu">Kathmandu</a> and currently live in <a href="http://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=NY+11372&sll=40.752719,-73.883572&sspn=0.053901,0.132093&ie=UTF8&hq=&hnear=Queens,+New+York+11372&ll=40.752849,-73.880138&spn=0.026821,0.066047&z=15&iwloc=A&layer=c&cbll=40.752771,-73.880123&panoid=pQmOrXrUNcTDmYXokJ7eMA&cbp=12,345.67,,0,10.16">Queens, NY (NYC)</a>.
+                </p>
+                <ul>
+                    <li><a href="http://feeds.feedburner.com/infynyxx-mini">RSS</a></li>
+                    <li><a href="http://life.infynyxx.com/archive">Archive</a></li>
+                    <li><a href="http://twitter.com/infynyxx">@infynyxx</a></li>
+                    <li><a href="mailto: tuladhar.prajwal@gmail.com">Email</a></li>
+                    <li><a href="http://linkedin.com/in/infynyxx">Linkedin</a></li>
+                    <li><a href="http://delicious.com/infynyxx">Bookmarks</a></li>
+                    <li><a href="http://www.facebook.com/infynyxx" style="text-decoration: line-through">Facebook</a></li>
+                </ul>
+                <hr/>
+                <p>Copyright Prajwal Tuladhar.</p>
+                <p><a href="http://creativecommons.org/licenses/by/3.0/us/">Some Rights Reserved</a></p>
+            </div>
+        </div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+try {
+var pageTracker = _gat._getTracker("UA-4175175-2");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+    
+  </body>
+</html>
